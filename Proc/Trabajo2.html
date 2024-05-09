@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -120,59 +86,15 @@ div.csl-indent {
 
 </header>
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(sjlabelled,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co">#Manipulacion de datos</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              stargazer, <span class="co">#Tablas</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>              sjmisc, <span class="co"># Tablas</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              summarytools, <span class="co"># Tablas</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              kableExtra, <span class="co">#Tablas</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>              sjPlot, <span class="co">#Tablas y gráficos</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              corrplot, <span class="co"># Correlaciones</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              sessioninfo, <span class="co"># Información de la sesión de trabajo</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>              ggplot2) <span class="co"># Para la mayoría de los gráficos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2015.RData"</span>,)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2016.RData"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2017.RData"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2018.RData"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2022.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="introducción" class="level2">
 <h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
 <p>El Sistema de Medición de la Calidad de la Educación, o más conocido como SIMCE, es un instrumento para dar a conocer el rendimiento académico escolar en nuestro país, este se realiza todos los años en cursos específicos, siendo 2do medio el último grado en rendirlo. Este a partir del año 2015 denotó un aumento año a año en su promedio de las pruebas de Lectura y Matemática, llegando así al 2017 con un puntaje de 251 y 270 respectivamente. Luego de esto el último SIMCE del 2018 dejó ver bajas en estos puntajes, llegando, por ejemplo, a tener un 50% de alumnos cursantes con una Lectura insuficiente <span class="citation" data-cites="sylviaeyzaguirreEducacionTiemposPandemia2020">(ver <a href="#ref-sylviaeyzaguirreEducacionTiemposPandemia2020" role="doc-biblioref">Sylvia Eyzaguirre et al. 2020</a>)</span> y luego de una pandemia y un estallido social en que no se realizaron estas pruebas, el pasado 2022 dio nuevamente resultados más bajos de lo esperado (pensando en la anterior alza) llegando a 247 en Lectura y 259 en Matemáticas, lo que a pesar de no ser una baja tan significativa, es preocupante el decenso del puntaje sobre todo en estos cursos ya que se encuentran a 2 años de rendir la PSU o elegir una alternativa profesional, siendo un tema crítico evaluar las razones para pronta solución y mejora en la educacion chilena.</p>
 <p>En esta investigación se busca entonces indagar sobre las posibles causas de esta caída en los puntajes, mirando tanto las políticas educacionales <span class="citation" data-cites="victorcastilloriquelmeMedicionIntegralidadEducativa2016">(ver <a href="#ref-victorcastilloriquelmeMedicionIntegralidadEducativa2016" role="doc-biblioref">Víctor Castillo Riquelme et al. 2016</a>)</span> como contexto social y/o económico que afectan directamente en los resultados <span class="citation" data-cites="orlandomella12AnosReforma2016">(ver <a href="#ref-orlandomella12AnosReforma2016" role="doc-biblioref">Orlando Mella 2016</a>)</span>. Así entonces decidí realizar una investigación con diseño transversal, recolectando datos de los puntajes de cada año con una muestra de estudiantes de la Región Metropolitana cursantes de 2do medio, decidí realizarlo con datos de este curso en específico por la importancia que tiene para la base de la educación superior y asi entender la problemática desde dentro para crear en un futuro mejores políticas educativas. Todo esto teniendo en cuenta que “el SIMCE no es causante de la desigualdad y la estigmatización social presente en el sistema educativo chileno, y que lo correcto es mantener la prueba y optimizar las situaciones de los colegios menos favorecidos para que logren subir su desempeño.” <span class="citation" data-cites="cristiancabalinDiscursosMediaticosSobre2019">(ver <a href="#ref-cristiancabalinDiscursosMediaticosSobre2019" role="doc-biblioref">Cristian Cabalín et al. 2019</a>)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#promedios 2015</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>promedio_lenguaje_2015 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2015<span class="sc">$</span>promedio_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>promedio_matematica_2015 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2015<span class="sc">$</span>promedio_matematica, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#promedios 2016</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>promedio_lenguaje_2016 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2016<span class="sc">$</span>promedio_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>promedio_matematica_2016 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2016<span class="sc">$</span>promedio_matematica, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#promedios 2017</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>promedio_lenguaje_2017 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2017<span class="sc">$</span>promedio_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>promedio_matematica_2017 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2017<span class="sc">$</span>promedio_matematica, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#promedios 2018</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>promedio_lenguaje_2018 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2018<span class="sc">$</span>promedio_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>promedio_matematica_2018 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2018<span class="sc">$</span>promedio_matematica, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#promedios 2022</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>promedio_lenguaje_2022 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2022<span class="sc">$</span>promedio_lenguaje, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>promedio_matematica_2022 <span class="ot">&lt;-</span> <span class="fu">mean</span>(Simce_2022<span class="sc">$</span>promedio_matematica, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="desarrollo" class="level2">
 <h2 class="anchored" data-anchor-id="desarrollo">Desarrollo</h2>
 <p>La caída del sistema SIMCE, al menos en la Región Metropolitana, comenzó el 2018 y aunque fue con pocos puntos de diferencia, marco un antes y un despues ya que no se han podido volver a obtener puntajes mas altos. Es más, hasta antes del 2018 los puntajes iban en subida, y luego de un contexto de tensión social, estallido social y luego pandemia los estudiantes han comenzado a bajar su promedio en estas pruebas de medición.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(Simce_2017,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -201,10 +123,6 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(Simce_2018,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -233,10 +151,6 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(Simce_2022,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -267,65 +181,6 @@ div.csl-indent {
 <p>Primeramente en el 2018 ya se estaban viviendo tensiones sociales en temas políticos y económicos del país, habiendo marchas y quejas por el aumento en la desigualdad y del costo de vida, esta tensión no se vivió tan solo en la calle, si no que existia también la movilización secundaria y, en varias oportunidades, estas movilizaciones incluian paro/tomas de establecimientosy la famosa “cimarra” para la asistencia a marchas, por lo que el foco del estudiantado fue desviado.</p>
 <p>Esto terminó por explotar el año 2019 desencadenando un estallido social, en dónde debido a su magnitud se paralizaron clases, pruebas e incluso el SIMCE.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2015, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2015</span>), <span class="at">y =</span> promedio_matematica_2015, <span class="at">fill =</span> <span class="st">"Matemáticas"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2015, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2015</span>), <span class="at">y =</span> promedio_lenguaje_2015, <span class="at">fill =</span> <span class="st">"Lenguaje"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2016, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2016</span>), <span class="at">y =</span> promedio_matematica_2016, <span class="at">fill =</span> <span class="st">"Matemáticas"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2016, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2016</span>), <span class="at">y =</span> promedio_lenguaje_2016, <span class="at">fill =</span> <span class="st">"Lenguaje"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2017, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2017</span>), <span class="at">y =</span> promedio_matematica_2017, <span class="at">fill =</span> <span class="st">"Matemáticas"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2017, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2017</span>), <span class="at">y =</span> promedio_lenguaje_2017, <span class="at">fill =</span> <span class="st">"Lenguaje"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2018, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2018</span>), <span class="at">y =</span> promedio_matematica_2018, <span class="at">fill =</span> <span class="st">"Matemáticas"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2018, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2018</span>), <span class="at">y =</span> promedio_lenguaje_2018, <span class="at">fill =</span> <span class="st">"Lenguaje"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2022, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2022</span>), <span class="at">y =</span> promedio_matematica_2022, <span class="at">fill =</span> <span class="st">"Matemáticas"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> Simce_2022, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(<span class="dv">2022</span>), <span class="at">y =</span> promedio_lenguaje_2022, <span class="at">fill =</span> <span class="st">"Lenguaje"</span>), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"Puntaje"</span>, <span class="at">title =</span> <span class="st">" Promedio Puntajes Anuales 2do Medio en la RM"</span>) <span class="sc">+</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Matemáticas"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Lenguaje"</span> <span class="ot">=</span> <span class="st">"red"</span>)) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"2015"</span>, <span class="st">"2016"</span>, <span class="st">"2017"</span>, <span class="st">"2018"</span>, <span class="st">"2022"</span>)) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">271</span>),  <span class="co"># Establecer los límites del eje Y</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">271</span>, <span class="at">by =</span> <span class="dv">50</span>),</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">scientific =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2015, aes(x = as.factor(2015), y = promedio_matematica_2015, : All aesthetics have length 1, but the data has 1052 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2015, aes(x = as.factor(2015), y = promedio_lenguaje_2015, : All aesthetics have length 1, but the data has 1052 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2016, aes(x = as.factor(2016), y = promedio_matematica_2016, : All aesthetics have length 1, but the data has 1047 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2016, aes(x = as.factor(2016), y = promedio_lenguaje_2016, : All aesthetics have length 1, but the data has 1047 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2017, aes(x = as.factor(2017), y = promedio_matematica_2017, : All aesthetics have length 1, but the data has 1049 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2017, aes(x = as.factor(2017), y = promedio_lenguaje_2017, : All aesthetics have length 1, but the data has 1049 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2018, aes(x = as.factor(2018), y = promedio_matematica_2018, : All aesthetics have length 1, but the data has 1048 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2018, aes(x = as.factor(2018), y = promedio_lenguaje_2018, : All aesthetics have length 1, but the data has 1048 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2022, aes(x = as.factor(2022), y = promedio_matematica_2022, : All aesthetics have length 1, but the data has 1057 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(data = Simce_2022, aes(x = as.factor(2022), y = promedio_lenguaje_2022, : All aesthetics have length 1, but the data has 1057 rows.
-ℹ Did you mean to use `annotate()`?</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="Trabajo2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -334,6 +189,18 @@ div.csl-indent {
 <p>Es interesante además notar la brecha que existe entre los promedios de Lenguaje y Matemáticas, siendo esta segunda prueba mejor rendida que la de Lectura, basada en la comprensión lectora de los estudiantes. Esto es algo bastante problemático ya que además como relata <span class="citation" data-cites="sylviaeyzaguirreEducacionTiemposPandemia2020">(<a href="#ref-sylviaeyzaguirreEducacionTiemposPandemia2020" role="doc-biblioref">Sylvia Eyzaguirre et al. 2020</a>)</span> la mitad de los estudiantes esta en el rango de Lectura Insuficiente, lo que significa que la comprensión lectora básica en los alumnos de 2do medio es deficiente. Esto nos lleva a otra problemática basandonos en las pocas herrramientas que poseen los estudiantes para enfrentarse a un texto de lectura y su análisis, ya que una buena lectura es necesaria para toda la vida sea cual sea el rumbo profesional que tome la persona. Para esto una posible solución debe ser implementar talleres de lectura para todos los cursos, incluyendo planes anuales desde cursos más pequeños para mejorar las habilidades lectoras.</p>
 <p>Además con la pandemia, aparte de la alta deserción escolar, se incorporaron probemas como la mala alimentación en los estudiantes, pérdida de habilidades sociales y cognitivas y aumento en la brecha de aprendizaje <span class="citation" data-cites="sylviaeyzaguirreEducacionTiemposPandemia2020">(ver <a href="#ref-sylviaeyzaguirreEducacionTiemposPandemia2020" role="doc-biblioref">Sylvia Eyzaguirre et al. 2020</a>)</span>, todo esto se relaciona directamente con una baja en los puntajes, presentando dificultades al volver precencialmente, a pesar que se hizo de manera gradual.</p>
 <p>Tampoco podemos esperar que los estudiantes vuelvan con el mismo desempeño escolar luego de estas problemáticas en sus casas durante 2 años en cuarentena, pero si se pueden implementar medidas de apoyo mayores, y tener siempre un Plan B para en casos de crisis sepamos como actuar y apoyar a nuestros estudiantes, ya que en estos dos casos nombrados ni los colegios ni el gobierno supieron actuar rápido por no tener medidas preventivas o planes de acción.</p>
+<p>Podemos observar además una diferencia notoria por comuna en los puntajes anuales, aquí tomaremos como ejemplos el año 2015 y el 2018. Esto denota que efectivamente, las comunas con menos ingresos tienen un rendimiento más bajo que comunas como Lo Barnechea que se caracteriza por su alto ingreso en la población y una mejor calidad de vida.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Trabajo2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Trabajo2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Lo bueno es que ya, para el año 2018 los niveles de desigualdad bajan, cerrandose un poco más a brecha comunales a menos en los puntajes de matemáticas.</p>
 </section>
 <section id="conclusión" class="level2">
 <h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>

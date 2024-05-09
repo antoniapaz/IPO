@@ -7,7 +7,7 @@ bibliography: Trabajo2.bib
 link-citations: true
 ---
 
-```{r}
+```{r, echo = FALSE}
 pacman::p_load(sjlabelled,
                dplyr, #Manipulacion de datos
               stargazer, #Tablas
@@ -18,9 +18,10 @@ pacman::p_load(sjlabelled,
               corrplot, # Correlaciones
               sessioninfo, # Información de la sesión de trabajo
               ggplot2) # Para la mayoría de los gráficos
+
 ```
 
-```{r}
+```{r, echo = FALSE}
 load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2015.RData",)
 load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2016.RData")
 load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2017.RData")
@@ -35,7 +36,7 @@ El Sistema de Medición de la Calidad de la Educación, o más conocido como SIM
 
 En esta investigación se busca entonces indagar sobre las posibles causas de esta caída en los puntajes, mirando tanto las políticas educacionales [ver @victorcastilloriquelmeMedicionIntegralidadEducativa2016] como contexto social y/o económico que afectan directamente en los resultados [ver @orlandomella12AnosReforma2016]. Así entonces decidí realizar una investigación con diseño transversal, recolectando datos de los puntajes de cada año con una muestra de estudiantes de la Región Metropolitana cursantes de 2do medio, decidí realizarlo con datos de este curso en específico por la importancia que tiene para la base de la educación superior y asi entender la problemática desde dentro para crear en un futuro mejores políticas educativas. Todo esto teniendo en cuenta que "el SIMCE no es causante de la desigualdad y la estigmatización social presente en el sistema educativo chileno, y que lo correcto es mantener la prueba y optimizar las situaciones de los colegios menos favorecidos para que logren subir su desempeño." [ver @cristiancabalinDiscursosMediaticosSobre2019]
 
-```{r}
+```{r, echo = FALSE}
 #promedios 2015
 promedio_lenguaje_2015 <- mean(Simce_2015$promedio_lenguaje, na.rm = TRUE)
 promedio_matematica_2015 <- mean(Simce_2015$promedio_matematica, na.rm = TRUE)
@@ -61,7 +62,7 @@ promedio_matematica_2022 <- mean(Simce_2022$promedio_matematica, na.rm = TRUE)
 
 La caída del sistema SIMCE, al menos en la Región Metropolitana, comenzó el 2018 y aunque fue con pocos puntos de diferencia, marco un antes y un despues ya que no se han podido volver a obtener puntajes mas altos. Es más, hasta antes del 2018 los puntajes iban en subida, y luego de un contexto de tensión social, estallido social y luego pandemia los estudiantes han comenzado a bajar su promedio en estas pruebas de medición.
 
-```{r}
+```{r, echo = FALSE}
 sjmisc::descr(Simce_2017,
       show = c(
         "range", "mean", "sd"))%>%
@@ -69,7 +70,7 @@ sjmisc::descr(Simce_2017,
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 sjmisc::descr(Simce_2018,
       show = c(
         "range", "mean", "sd"))%>%
@@ -77,7 +78,7 @@ sjmisc::descr(Simce_2018,
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 sjmisc::descr(Simce_2022,
       show = c(
         "range", "mean", "sd"))%>%
@@ -89,7 +90,7 @@ Primeramente en el 2018 ya se estaban viviendo tensiones sociales en temas polí
 
 Esto terminó por explotar el año 2019 desencadenando un estallido social, en dónde debido a su magnitud se paralizaron clases, pruebas e incluso el SIMCE.
 
-```{r}
+```{r, echo = FALSE, warning = FALSE}
 library(ggplot2)
 
 ggplot() +
@@ -120,6 +121,34 @@ Es interesante además notar la brecha que existe entre los promedios de Lenguaj
 Además con la pandemia, aparte de la alta deserción escolar, se incorporaron probemas como la mala alimentación en los estudiantes, pérdida de habilidades sociales y cognitivas y aumento en la brecha de aprendizaje [ver @sylviaeyzaguirreEducacionTiemposPandemia2020], todo esto se relaciona directamente con una baja en los puntajes, presentando dificultades al volver precencialmente, a pesar que se hizo de manera gradual.
 
 Tampoco podemos esperar que los estudiantes vuelvan con el mismo desempeño escolar luego de estas problemáticas en sus casas durante 2 años en cuarentena, pero si se pueden implementar medidas de apoyo mayores, y tener siempre un Plan B para en casos de crisis sepamos como actuar y apoyar a nuestros estudiantes, ya que en estos dos casos nombrados ni los colegios ni el gobierno supieron actuar rápido por no tener medidas preventivas o planes de acción.
+
+Podemos observar además una diferencia notoria por comuna en los puntajes anuales, aquí tomaremos como ejemplos el año 2015 y el 2018. Esto denota que efectivamente, las comunas con menos ingresos tienen un rendimiento más bajo que comunas como Lo Barnechea que se caracteriza por su alto ingreso en la población y una mejor calidad de vida.
+
+```{r, echo = FALSE, warning = FALSE}
+ggplot(Simce_2015, aes(x = comuna)) +
+  geom_bar(data = subset(Simce_2015, comuna %in% c("LA PINTANA", "SANTIAGO", "LO BARNECHEA")),
+           aes(y = promedio_matematica, fill = "Matemáticas"), stat = "identity", position = "dodge") +
+  geom_bar(data = subset(Simce_2015, comuna %in% c("LA PINTANA", "SANTIAGO", "LO BARNECHEA")),
+           aes(y = promedio_lenguaje, fill = "Lenguaje"), stat = "identity", position = "dodge") +
+  labs(x = "Comuna", y = "Puntaje", title = "Promedios de Matemáticas y Lenguaje por Comuna") +
+  scale_y_continuous(limits = c(0, 350)) +
+  scale_fill_manual(values = c("Matemáticas" = "blue", "Lenguaje" = "red")) +
+  theme_minimal()
+```
+
+```{r, echo = FALSE, warning = FALSE}
+ggplot(Simce_2018, aes(x = comuna)) +
+  geom_bar(data = subset(Simce_2018, comuna %in% c("La Pintan", "Santiago", "Lo Barnec")),
+           aes(y = promedio_matematica, fill = "Matemáticas"), stat = "identity", position = "dodge") +
+  geom_bar(data = subset(Simce_2018, comuna %in% c("La Pintan", "Santiago", "Lo Barnec")),
+           aes(y = promedio_lenguaje, fill = "Lenguaje"), stat = "identity", position = "dodge") +
+  labs(x = "Comuna", y = "Puntaje", title = "Promedios de Matemáticas y Lenguaje por Comuna") +
+  scale_y_continuous(limits = c(0, 350)) +
+  scale_fill_manual(values = c("Matemáticas" = "blue", "Lenguaje" = "red")) +
+  theme_minimal()
+```
+
+Lo bueno es que ya, para el año 2018 los niveles de desigualdad bajan, cerrandose un poco más a brecha comunales a menos en los puntajes de matemáticas.
 
 ## Conclusión
 
