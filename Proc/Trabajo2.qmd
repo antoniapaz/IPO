@@ -130,7 +130,7 @@ ggplot(Simce_2015, aes(x = comuna)) +
            aes(y = promedio_matematica, fill = "Matemáticas"), stat = "identity", position = "dodge") +
   geom_bar(data = subset(Simce_2015, comuna %in% c("LA PINTANA", "SANTIAGO", "LO BARNECHEA")),
            aes(y = promedio_lenguaje, fill = "Lenguaje"), stat = "identity", position = "dodge") +
-  labs(x = "Comuna", y = "Puntaje", title = "Promedios de Matemáticas y Lenguaje por Comuna") +
+  labs(x = "Comuna", y = "Puntaje", title = "Promedios de Matemáticas y Lenguaje por Comuna 2015") +
   scale_y_continuous(limits = c(0, 350)) +
   scale_fill_manual(values = c("Matemáticas" = "blue", "Lenguaje" = "red")) +
   theme_minimal()
@@ -142,13 +142,15 @@ ggplot(Simce_2018, aes(x = comuna)) +
            aes(y = promedio_matematica, fill = "Matemáticas"), stat = "identity", position = "dodge") +
   geom_bar(data = subset(Simce_2018, comuna %in% c("La Pintan", "Santiago", "Lo Barnec")),
            aes(y = promedio_lenguaje, fill = "Lenguaje"), stat = "identity", position = "dodge") +
-  labs(x = "Comuna", y = "Puntaje", title = "Promedios de Matemáticas y Lenguaje por Comuna") +
+  labs(x = "Comuna", y = "Puntaje", title = "Promedios de Matemáticas y Lenguaje por Comuna 2018") +
   scale_y_continuous(limits = c(0, 350)) +
   scale_fill_manual(values = c("Matemáticas" = "blue", "Lenguaje" = "red")) +
   theme_minimal()
 ```
 
-Lo bueno es que ya, para el año 2018 los niveles de desigualdad bajan, cerrandose un poco más a brecha comunales a menos en los puntajes de matemáticas.
+Lo bueno es que ya, para el año 2018 los niveles de desigualdad bajan, cerrandose un poco más a brecha comunales a menos en los puntajes de matemáticas. De todas formas el que hayan diferencias por comuna es preocupante, ya que la educación no debería ser un privilegio.
+
+De todas formas, sigue siendo lamentable la brecha que existe entre los promedios de lenguaje y de matemáticas, preocupa el bajo rendimiento de los estudiantes en una prueba que mide comprensión lectora, no hay grandes medidas aún de parte del gobierno para su reparación.
 
 ## Conclusión
 
