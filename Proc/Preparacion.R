@@ -84,5 +84,52 @@ Simce_2022 <- Simce_2022 %>% rename(
 
 save(Simce_2022,file = "C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2022.RData")
 
+#Base INE
 
+setwd("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input")
+esi_2022 <- readRDS("esi_2022.rds")
+save(esi_2022, file = "esi_2022.RData")
+load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/esi_2022.RData")
+rm_esi_2022 <- subset(esi_2022, `region` == "13")
+base_esi <- rm_esi_2022[, c("r_p_c", "ing_t_d")]
+base_esi <- subset(base_esi, ing_t_d != 0.0)
+#cambio de nombre
+base_esi$r_p_c <- ifelse(base_esi$r_p_c == 13101, "Santiago",
+                         ifelse(base_esi$r_p_c == 13102, "Cerrillos",
+                                ifelse(base_esi$r_p_c == 13103, "Cerro Navia",
+                                       ifelse(base_esi$r_p_c == 13104, "Conchali",
+                                              ifelse(base_esi$r_p_c == 13105, "El Bosque",
+                                                     ifelse(base_esi$r_p_c == 13106, "Estacion central",
+                                                            ifelse(base_esi$r_p_c == 13107, "Huechuraba",
+                                                                   ifelse(base_esi$r_p_c == 13108, "Independencia",
+                                                                          ifelse(base_esi$r_p_c == 13109, "La Cisterna",
+                                                                                 ifelse(base_esi$r_p_c == 13110, "La Florida",
+                                                                                        ifelse(base_esi$r_p_c == 13111, "La Granja",
+                                                                                               ifelse(base_esi$r_p_c == 13112, "La Pintana",
+                                                                                                      ifelse(base_esi$r_p_c == 13113, "La Reina",
+                                                                                                             ifelse(base_esi$r_p_c == 13114, "Las Condes",
+                                                                                                                    ifelse(base_esi$r_p_c == 13115, "Lo Barnechea",
+                                                                                                                           ifelse(base_esi$r_p_c == 13116, "Lo Espejo",
+                                                                                                                                  ifelse(base_esi$r_p_c == 13117, "Lo Prado",
+                                                                                                                                         ifelse(base_esi$r_p_c == 13118, "Macul",
+                                                                                                                                                ifelse(base_esi$r_p_c == 13119, "Maipu",
+                                                                                                                                                       ifelse(base_esi$r_p_c == 13120, "Nunoa",
+                                                                                                                                                              ifelse(base_esi$r_p_c == 13121, "Pedro Aguirre Cerda",
+                                                                                                                                                                     ifelse(base_esi$r_p_c == 13122, "Penalolen",
+                                                                                                                                                                            ifelse(base_esi$r_p_c == 13123, "Providencia",
+                                                                                                                                                                                   ifelse(base_esi$r_p_c == 13124, "Pudahuel",
+                                                                                                                                                                                          ifelse(base_esi$r_p_c == 13125, "Quilicura",
+                                                                                                                                                                                                 ifelse(base_esi$r_p_c == 13126, "Quinta Normal",
+                                                                                                                                                                                                        ifelse(base_esi$r_p_c == 13127, "Recoleta",
+                                                                                                                                                                                                               ifelse(base_esi$r_p_c == 13128, "Renca",
+                                                                                                                                                                                                                      ifelse(base_esi$r_p_c == 13129, "San Joaquin",
+                                                                                                                                                                                                                             ifelse(base_esi$r_p_c == 13130, "San Miguel",
+                                                                                                                                                                                                                                    ifelse(base_esi$r_p_c == 13131, "San Ramon",
+                                                                                                                                                                                                                                           ifelse(base_esi$r_p_c == 13132, "Vitacura",
+                                                                                                                                                                                                                                                  ifelse(base_esi$r_p_c == 13201, "Puente Alto", 
+                                                                                                                                                                                                                                                         ifelse(base_esi$r_p_c == 13401, "San Bernardo", "Otro"))))))))))))))))))))))))))))))))))
+base_esi <- subset(base_esi, r_p_c != "Otro")
+names(base_esi)[names(base_esi) == "r_p_c"] <- "comuna"
+names(base_esi)[names(base_esi) == "ing_t_d"] <- "ingreso"
+save(base_esi,file = "C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/base_esi.RData")
 

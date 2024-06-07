@@ -17,7 +17,8 @@ pacman::p_load(sjlabelled,
               sjPlot, #Tablas y gráficos
               corrplot, # Correlaciones
               sessioninfo, # Información de la sesión de trabajo
-              ggplot2) # Para la mayoría de los gráficos
+              ggplot2, 
+              ggpubr) # Para la mayoría de los gráficos
 
 ```
 
@@ -27,7 +28,7 @@ load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2016.RData")
 load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2017.RData")
 load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2018.RData")
 load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/Simce_2022.RData")
-
+load("C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Input/base_esi.RData")
 ```
 
 ## Introducción
@@ -56,6 +57,10 @@ promedio_matematica_2018 <- mean(Simce_2018$promedio_matematica, na.rm = TRUE)
 #promedios 2022
 promedio_lenguaje_2022 <- mean(Simce_2022$promedio_lenguaje, na.rm = TRUE)
 promedio_matematica_2022 <- mean(Simce_2022$promedio_matematica, na.rm = TRUE)
+
+promedio_ingreso <- base_esi %>% 
+  group_by(comuna) %>% 
+  summarise(promedio_ingreso = mean(ingreso, na.rm = TRUE))
 ```
 
 ## Desarrollo
@@ -151,6 +156,35 @@ ggplot(Simce_2018, aes(x = comuna)) +
 Lo bueno es que ya, para el año 2018 los niveles de desigualdad bajan, cerrandose un poco más a brecha comunales a menos en los puntajes de matemáticas. De todas formas el que hayan diferencias por comuna es preocupante, ya que la educación no debería ser un privilegio.
 
 De todas formas, sigue siendo lamentable la brecha que existe entre los promedios de lenguaje y de matemáticas, preocupa el bajo rendimiento de los estudiantes en una prueba que mide comprensión lectora, no hay grandes medidas aún de parte del gobierno para su reparación.
+
+En el siguente gráfico podemos apreciar la desigualdad de ingresos por comuna, con datos sacados desde la Encuesta Suplementaria de Ingresos del INE el año 2022. La idea es evaluar si efectivamente el ingreso es un derminante en el puntaje de los alumnos de 2do Medio.
+
+```{r}
+ggplot(promedio_ingreso, aes(x = reorder(comuna, promedio_ingreso), y = promedio_ingreso)) +
+  geom_bar(stat = "identity", fill = "black", color = "black") +
+  labs(title = "Promedio de Ingreso Mensual por Comuna",
+       x = "Comuna",
+       y = "Promedio de Ingreso") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r, echo = FALSE, warning = FALSE}
+ggplot(Simce_2017, aes(x = comuna)) +
+  geom_bar(data = subset(Simce_2015, comuna %in% c("LA PINTANA", "SANTIAGO", "LAS CONDES")),
+           aes(y = promedio_matematica, fill = "Matemáticas"), stat = "identity", position = "dodge") +
+  geom_bar(data = subset(Simce_2017, comuna %in% c("LA PINTANA", "SANTIAGO", "LAS CONDES")),
+           aes(y = promedio_lenguaje, fill = "Lenguaje"), stat = "identity", position = "dodge") +
+  labs(x = "Comuna", y = "Puntaje", title = "Promedios de Matemáticas y Lenguaje por Comuna 2017") +
+  scale_y_continuous(limits = c(0, 350)) +
+  scale_fill_manual(values = c("Matemáticas" = "blue", "Lenguaje" = "red")) +
+  theme_minimal()
+
+```
+
+Aquí podemos darnos cuenta que efectivamente la diferencia entre las comunas tiene una incidencia directa en la altura de los punataes.
+
+```{r}
+```
 
 ## Conclusión
 
