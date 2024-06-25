@@ -4,6 +4,7 @@ author: "Antonia Moreno"
 format: 
   revealjs:
     theme: moon
+    embed-resources: true
 editor: visual
 bibliography: Trabajo-1-R.bib
 link-citations: true
