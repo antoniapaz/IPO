@@ -1,0 +1,57 @@
+---
+title: "Caída del Simce 2do Medio en la Región Metropolitana: Posibles Causas y Soluciones para la educación en Chile :)"
+author: "Antonia Moreno"
+format: 
+  revealjs:
+    theme: moon
+editor: visual
+bibliography: Trabajo-1-R.bib
+link-citations: true
+---
+
+# Introducción
+
+::: columns
+::: {.column width="50%"}
+En este trabajo de investigacion trabajé con datos del Sistema de Medición de la Calidad de la Educación (SIMCE), en específico los puntajes de 2dos Medios en la RM entre 2015 y 2022.
+:::
+
+::: {.column width="50%"}
+![](stgocl.jpg){width="200%"}
+:::
+:::
+
+# Desarrollo =)
+
+Este a partir del año 2015 denotó un aumento año a año en su promedio de las pruebas de Lectura y Matemática. Luego de esta suseción de alzas, el 2018 dejó ver bajas en estos puntajes, y, luego de una pandemia y un estallido social en que no se realizaron estas pruebas, el pasado 2022 dio nuevamente resultados más bajos de lo esperado,lo que a pesar de no ser una baja tan significativa, es preocupante el descenso del puntaje sobre todo en estos cursos ya que se encuentran a 2 años de rendir la PSU o elegir una alternativa profesional, siendo un tema crítico evaluar las razones para pronta solución y mejora en la educación chilena.
+
+
+## Caída del simce
+
+![](graph1.png){width="100%"} 
+
+## 2017
+
+![](2017.png){width="100%"}
+
+## 2022
+
+![](2021.png){width="100%"}
+
+## Cita
+
+Con la pandemia, aparte de la alta deserción escolar, se incorporaron problemas como la mala alimentación en los estudiantes, pérdida de habilidades sociales y cognitivas y aumento en la brecha de aprendizaje [ver @sylviaeyzaguirreEducacionTiemposPandemia2020], todo esto se relaciona directamente con una baja en los puntajes, presentando dificultades al volver presencialmente, a pesar que se hizo de manera gradual.
+
+## Ingresos
+
+![](graph2.png){width=100%}
+
+
+
+## Conclusión
+
+"el SIMCE no es causante de la desigualdad y la estigmatización social presente en el sistema educativo chileno, y que lo correcto es mantener la prueba y optimizar las situaciones de los colegios menos favorecidos para que logren subir su desempeño." [ver @cristiancabalinDiscursosMediaticosSobre2019]
+
+# Gracias \<3
+
+## Referencias
