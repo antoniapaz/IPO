@@ -26,10 +26,9 @@ En este trabajo de investigacion trabajé con datos del Sistema de Medición de 
 
 Este a partir del año 2015 denotó un aumento año a año en su promedio de las pruebas de Lectura y Matemática. Luego de esta suseción de alzas, el 2018 dejó ver bajas en estos puntajes, y, luego de una pandemia y un estallido social en que no se realizaron estas pruebas, el pasado 2022 dio nuevamente resultados más bajos de lo esperado,lo que a pesar de no ser una baja tan significativa, es preocupante el descenso del puntaje sobre todo en estos cursos ya que se encuentran a 2 años de rendir la PSU o elegir una alternativa profesional, siendo un tema crítico evaluar las razones para pronta solución y mejora en la educación chilena.
 
-
 ## Caída del simce
 
-![](graph1.png){width="100%"} 
+![](graph1.png){width="100%"}
 
 ## 2017
 
@@ -45,9 +44,7 @@ Con la pandemia, aparte de la alta deserción escolar, se incorporaron problemas
 
 ## Ingresos
 
-![](graph2.png){width=100%}
-
-
+![](graph2.png){width="100%"}
 
 ## Conclusión
 
