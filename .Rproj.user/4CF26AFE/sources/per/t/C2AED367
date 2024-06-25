@@ -3,9 +3,9 @@
     "path": "C:/Users/apazm/OneDrive/Escritorio/RSTUDIO/IPO/Proc/Trabajo2.qmd",
     "project_path": "Proc/Trabajo2.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "2227668702",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1718139833207.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -21,11 +21,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1717728153,
+    "lastKnownWriteTime": 1719348808,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1719280952106,
+    "last_content_update": 1719348808100,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -116,7 +116,6 @@ ggplot() +
                      breaks = seq(0, 271, by = 50),
                      labels = function(x) format(x, scientific = FALSE))
 
-
 ```
 
 En este gráfico se puede notar como anterior a esto el puntaje en los estudiantes se encontraba en alza año a año, hasta llegar al 2018. Luego de esto, por el estallido social y luego por la pandemia del Covid-19 las pruebas fueron suspendidas, por lo que en estos años no existe cifra a comparar, pero esta más que claro que influyeron de manera negativa en los alumnos ya que al retomar la prueba el año 2022 los puntajes volvieron a bajar.
@@ -153,7 +152,27 @@ ggplot(Simce_2018, aes(x = comuna)) +
   theme_minimal()
 ```
 
-Lo bueno es que ya, para el año 2018 los niveles de desigualdad bajan, cerrandose un poco más a brecha comunales a menos en los puntajes de matemáticas. De todas formas el que hayan diferencias por comuna es preocupante, ya que la educación no debería ser un privilegio.
+```{r}
+comunas_a_excluir <- c("MARÍA PINTO", "LAMPA", "ISLA DE MAIPO", "SAN JOSÉ DE MAIPO", "MELIPILLA", "CURACAVÍ", "PIRQUE", "BUIN", "TALAGANTE", "ALHUÉ", "TIL TIL", "COLINA", "CALER DE TANGO", "PADRE HURTADO", "EL MONTE", "PEÑAFLOR", "CALERA DE TANGO", "PAINE", "SAN PEDRO", "TILTIL", "SAN JOSÉ DE MAIP")
+
+datos_filtrados <- Simce_2022 %>%
+  filter(!comuna %in% comunas_a_excluir) %>%
+  group_by(comuna) %>%
+  summarize(promedio_lenguaje = mean(promedio_lenguaje, na.rm = TRUE)) %>%
+  arrange(promedio_lenguaje)
+
+ggplot(datos_filtrados, aes(x = reorder(comuna, promedio_lenguaje), y = promedio_lenguaje)) +
+  geom_bar(stat = "identity", fill = "black", color = "black") +
+  labs(title = "Promedio Lenguaje 2022 por Comuna",
+       x = "Comuna",
+       y = "Promedio") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+```
+
+Lo bueno es que ya, para el año 2018 los niveles de desigualdad bajan, cerrandose un poco más a
+
+brecha comunales a menos en los puntajes de matemáticas. De todas formas el que hayan diferencias por comuna es preocupante, ya que la educación no debería ser un privilegio.
 
 De todas formas, sigue siendo lamentable la brecha que existe entre los promedios de lenguaje y de matemáticas, preocupa el bajo rendimiento de los estudiantes en una prueba que mide comprensión lectora, no hay grandes medidas aún de parte del gobierno para su reparación.
 
